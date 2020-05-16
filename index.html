@@ -1,103 +1,261 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html class="no-js" lang="en">
 
 <head>
-  <meta charset='UTF-8'>
-  <title>Portfolio Homepage</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Parm's Portfolio</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="container">
-    <div class="nav-wrapper">
-      <div class="left-side">
-        <div class="nav-link-wrapper active-nav-link">
-          <a href="index.html">Home</a>
-        </div>
-
-        <div class="nav-link-wrapper">
-          <a href="about.html">About</a>
-        </div>
-      </div>
-
-      <div class="right-side">
-        <div class="brand">
-          PARM JOHAL
-        </div>
-      </div>
+    <div id="mobile-menu-open" class="shadow-large">
+        <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
-
-    <div class="content-wrapper">
-      <div class="portfolio-items-wrapper">
-
-        <div class="portfolio-item-wrapper">
-          <div class="portfolio-img-background" style="background-image:url(images/pic3.jpg)"></div>
-
-          <div class="img-text-wrapper">
-            <div class="logo-wrapper">
-              <!--<img src="images/logos/quip.png" alt="">-->
-            </div>
-
-            <div class="subtitle">Coding is what I love to do, solving a problem multiple ways keeps my mind growing.</div>
-          </div>
+    <!-- End #mobile-menu-toggle -->
+    <header>
+        <div id="mobile-menu-close">
+            <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
         </div>
+        <ul id="menu" class="shadow">
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#experience">Experience</a>
+            </li>
+            <li>
+                <a href="#education">Education</a>
+            </li>
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+            <li>
+                <a href="#skills">Skills</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </header>
+    <!-- End header -->
 
-        <div class="portfolio-item-wrapper">
-          <div class="portfolio-img-background" style="background-image:url(images/pic4.jpg)"></div>
-          <div class="img-text-wrapper">
-            <div class="logo-wrapper">
-              <!--<img src="images/logos/devcamp.png" alt="">-->
-            </div>
-
-            <div class="subtitle">Working in a team environment is always thrilling because when we get something done we're all happy together.
-			  Teamwork makes the dream work!</div>
-          </div>
+    <div id="lead">
+        <div id="profile-pic">
+          <img src="./images/profilepic.png" alt="profile picture">
         </div>
-
-        <div class="portfolio-item-wrapper">
-          <div class="portfolio-img-background" style="background-image:url(images/portfolio6.jpg)"></div>
-          <div class="img-text-wrapper">
-            <div class="logo-wrapper">
-              <!--<img src="images/logos/eventbrite.png" alt="">-->
-            </div>
-
-            <div class="subtitle">I'm very into data science and handling large amounts of it. Whether it's data mining or database management, I'm interested!</div>
-          </div>
+        <div id="lead-content">
+            <h1>Parm Johal</h1>
+            <h2>Web Developer</h2>
+            <a href="./libs/Resume.pdf" target="_blank" class="btn-rounded-white">Resume (PDF)</a>
         </div>
+        <!-- End #lead-content -->
 
-        <div class="portfolio-item-wrapper">
-          <div class="portfolio-img-background" style="background-image:url(images/portfolio4.jpg)"></div>
-          <div class="img-text-wrapper">
-            <div class="logo-wrapper">
-             <!-- <img src="images/logos/shop-hacker.png" alt="">-->
-            </div>
+        <div id="lead-overlay"></div>
 
-            <div class="subtitle">Being able to work on projects in different settings allows me to think differently at times. A solution may pop up anywhere!</div>
-          </div>
+        <div id="lead-down">
+            <span>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </span>
         </div>
-
-      </div>
+        <!-- End #lead-down -->
     </div>
-  </div>
+    <!-- End #lead -->
 
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="heading">About Me</h2>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      As a recent UVic graduate, I'm ready to tackle the next step in my life which is joining the tech workforce.
+              I have fun with the front end development of projects, but I'm not afraid to tackle the nitty-gritty
+              backend development. My experience working in HTML, CSS, and Javascript gives me an eye capturing
+              view on how users would want to see my work. Programming languages that I've been accustomed to
+              include Java, C, Python, along with working with relational databases like PostgreSQL. My favourite
+              areas of work are data mining and scaling distributed systems. When i'm not sitting in front of the
+              computer, I like to spend my time staying active with soccer and going to the gym. I'm also a big fan
+              of music, which is big reason why I joined the computer science program in the first place. Music has
+              led me to a fun working industry and another passion!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End #about -->
+
+    <div id="experience" class="background-alt">
+        <h2 class="heading">Experience</h2>
+        <div id="experience-timeline">
+            <div data-date="May 2020 – Present">
+                <h3>RUN-UP RECORDS</h3>
+                <h4>Web Developer</h4>
+                <p>
+                    Created a landing page for a client.
+                </p>
+            </div>
+
+            <div data-date="August 2019 – Present">
+                <h3>Rev Status</h3>
+                <h4>Web Developer</h4>
+                <p>
+                    Created a landing page for a client.
+                </p>
+            </div>
+
+            <div data-date="August 2019 – Present">
+                <h3>Rev Status</h3>
+                <h4>Web Developer</h4>
+                <p>
+                    Creating a landing page for a client.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- End #experience -->
+
+    <div id="education">
+        <h2 class="heading">Education</h2>
+        <div class="education-block">
+            <h3>Bachelor of Science in Computer Science</h3>
+            <span class="education-date"><b>Graduation:</b>  June 2020</span>
+            <h4>Bachelor of Science in Computer Science</h4>
+            <h4>Victoria, B.C.</h4>
+            <br>
+            <p><b>Notable topics learned:</b><br>
+              <ul>
+                <li>Algorithms & Efficiency</li>
+                <li>Distributed Software Systems</li>
+                <li>Database Systems</li>
+                <li>Data Mining</li>
+                <li>Operating Systems</li>
+                <li>A.I. & Machine Learning</li>
+              </ul>
+        </div>
+        <!-- End .education-block -->
+    </div>
+    <!-- End #education -->
+
+    <div id="projects" class="background-alt">
+        <h2 class="heading">Projects</h2>
+        <div class="container">
+            <div class="row">
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/architecture.jpg" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>DayTrading Inc.</h3>
+                          <h4>Prototype Trading System</h4>
+                        <p>
+                            info here.
+                        </p>
+                        <br>
+                        <a href="https://github.com/LiuAllan/SENG468_ScalabilityDayTradeInc" target="_blank">View Project</a>
+                        <br><br>
+                        <a href="./libs/Team KitKat Documentation.pdf" target="_blank">View Documentation</a>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/Entity-Relationship CSC 370.jpg" />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>Project Name Here</h3>
+                        <p>
+                            info here.
+                        </p>
+                        <br>
+                        <a href="https://github.com/DatabaseJumpers/a3" target="_blank">View Project</a>
+                        <br><br>
+                        <a href="#">View Documentation</a>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+            </div>
+        </div>
+    </div>
+    <!-- End #projects -->
+
+    <div id="skills">
+        <h2 class="heading">Skills</h2>
+        <ul>
+            <li>Python</li>
+            <li>Node.js</li>
+            <li>AngularJs</li>
+            <li>React</li>
+            <li>Java</li>
+            <li>C</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>PostgreSQL</li>
+
+
+        </ul>
+    </div>
+    <!-- End #skills -->
+<!--
+    <div id="contact">
+        <h2>Get in Touch</h2>
+        <div id="contact-form">
+            <form method="POST" action="https://formspree.io/email@email.com">
+                <input type="hidden" name="_subject" value="Contact request from personal website" />
+                <input type="email" name="_replyto" placeholder="Your email" required>
+                <textarea name="message" placeholder="Your message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+         End #contact-form
+    </div>
+     End #contact
+-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 copyright">
+                    <p>
+                        Copyright &copy; 2020 Parm Johal
+                    </p>
+                </div>
+                <div class="col-sm-2 top">
+                    <span id="to-top">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="col-sm-5 social">
+                    <ul>
+                        <li>
+                            <a href="https://github.com/ParmbeerJohal" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/parm-johal-7144a1184/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/parm.johal.54" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
-
-<script>
-  const portfolioItems = document.querySelectorAll('.portfolio-item-wrapper');
-
-  portfolioItems.forEach(portfolioItem => {
-    portfolioItem.addEventListener('mouseover', () => {
-      console.log(portfolioItem.childNodes[1].classList)
-      portfolioItem.childNodes[1].classList.add('image-blur');
-    });
-
-    portfolioItem.addEventListener('mouseout', () => {
-      console.log(portfolioItem.childNodes[1].classList)
-      portfolioItem.childNodes[1].classList.remove('image-blur');
-    });
-  });
-
-</script>
 
 </html>
