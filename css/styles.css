@@ -249,7 +249,7 @@ footer {
   height:100vh;
   min-height:500px;
   max-height:1080px;
-  background:url(../images/lead-bg.jpg);
+  background:url(../images/abstract-technology-particle-background_52683-25766.jpg);
   background-size:cover;
   padding:15px;
   overflow:hidden;
@@ -307,7 +307,7 @@ footer {
   bottom:0;
   left:0;
   background:rgb(50,50,50);
-  opacity: 0.8;
+  opacity: 0.4;
   z-index:1;
 }
 
