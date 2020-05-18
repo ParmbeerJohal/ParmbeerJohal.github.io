@@ -51,7 +51,7 @@ header {
   animation-name:dropHeader;
   animation-iteration-count:1;
   animation-timing-function:ease;
-  animation-duration:0.75s;
+  animation-duration:1s;
 }
 
 header ul {
@@ -132,7 +132,8 @@ header.active {
 
 footer {
   padding:50px 0;
-  background:rgb(50,50,50);
+  background:url(../images/96482.jpg);
+  background-size:cover;
 }
 
 .col-sm-5 {
@@ -212,6 +213,23 @@ footer {
   text-decoration:none;
 }
 
+.btn-rounded-dark {
+  margin-top: 20px;
+  display:inline-block;
+  color: #3498db;
+  padding:15px 25px;
+  border:3px solid #3498db;
+  border-radius:30px;
+  text-decoration: none;
+  transition:.5s ease all;
+}
+
+.btn-rounded-dark:hover {
+  color:white;
+  background:#3498db;
+  text-decoration:none;
+}
+
 .shadow {
   box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);
 }
@@ -249,7 +267,7 @@ footer {
   height:100vh;
   min-height:500px;
   max-height:1080px;
-  background:url(../images/abstract-technology-particle-background_52683-25766.jpg);
+  background:url(../images/96482.jpg);
   background-size:cover;
   padding:15px;
   overflow:hidden;
@@ -306,8 +324,6 @@ footer {
   right:0;
   bottom:0;
   left:0;
-  background:rgb(50,50,50);
-  opacity: 0.3;
   z-index:1;
 }
 
@@ -463,6 +479,12 @@ footer {
   margin:0;
 }
 
+.vtimeline-content ul {
+  color:#74808a;
+  font-size:0.9em;
+  margin:0;
+}
+
 .vtimeline-point {
   position:relative;
   display:block;
@@ -579,6 +601,8 @@ footer {
 
 .project-image {
   float:left;
+  height: 300px;
+  width: 300px;
 }
 
 .project-image img {
@@ -599,6 +623,7 @@ footer {
   font-weight:300;
   color:#374054;
   margin:0 0 15px 0;
+  padding: 10px 10px;
 }
 
 .project-info h4 {
@@ -610,7 +635,7 @@ footer {
 
 .project-info p {
   color:#74808a;
-  margin:0 0 15px 0;
+  margin:5px;
   font-size:0.9em;
 }
 
@@ -900,7 +925,6 @@ footer {
 
   footer {
     text-align:center;
-    background:rgb(50,50,50);
   }
 
   .social {
