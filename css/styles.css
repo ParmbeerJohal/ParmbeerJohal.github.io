@@ -605,6 +605,14 @@ footer {
   width: 300px;
 }
 
+#project-image-0 {
+  background-color: black;
+}
+
+#project-image-0 img {
+  margin-top: 25%;
+}
+
 .project-image img {
   border-right: 1px groove lightgray;
 
