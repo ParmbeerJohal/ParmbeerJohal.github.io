@@ -146,12 +146,12 @@ footer {
 }
 
 .copyright {
-  padding-top:20px;
+  padding-top:30px;
 }
 
 .copyright p {
   margin:0;
-  color:#74808a;
+  color:white;
 }
 
 .top{
@@ -174,11 +174,11 @@ footer {
 }
 
 .social {
-  text-align:right;
+  text-align:center;
 }
 
 .social ul {
-  margin:5px 0 0 0;
+  margin:15px 0 0 0;
   padding:0;
 }
 
@@ -189,7 +189,7 @@ footer {
 }
 .social a {
   display:block;
-  color:#74808a;
+  color:white;
   padding:10px;
 }
 
@@ -285,6 +285,13 @@ footer {
   margin-right: auto;
   display: block;
   z-index: 20;
+}
+
+@media screen and (max-width: 620px) {
+  #profile-pic img {
+    width: 30vh;
+    margin-bottom: 50px;
+  }
 }
 
 #lead-content {
