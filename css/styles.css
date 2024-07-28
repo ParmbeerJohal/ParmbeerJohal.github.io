@@ -522,10 +522,13 @@ footer {
   margin:0;
 }
 
+.vtimeline-content ul li {
+  margin-top: 1.1em;
+}
+
 .vtimeline-point {
   position:relative;
   display:block;
-  vertical-align:top;
   margin-bottom:30px;
 }
 
@@ -990,4 +993,29 @@ footer {
     font-size:0.9em;
     padding:5px 10px;
   }
+}
+
+/* Text animation styling */
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+.hidden {
+  opacity: 0;
+}
+.console-container {
+  position: relative;
+  font-family: Khula;
+  font-size: 2em;
+  text-align: center;
+  display: block;
+  color: white;
+  top: 20px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.console-underscore {
+  display: inline-block;
+  position: relative;
+  top: -0.14em;
+  left: 10px;
 }
