@@ -4,15 +4,24 @@
  * @author Parm Johal
  */
 
+// Array of text to animate
 const textArray = [
-  "Hello World.",
+  "Hello World!",
   "I am a...",
-  "Full-Stack Developer.",
-  "Web Developer.",
-  "Web Designer.",
+  "Full-Stack Developer",
+  "Web Developer",
+  "Web Designer",
+  "and much more!"
 ];   
 consoleText(textArray, "animateText");
 
+/**
+ * Function to animate text on the home page
+ * @param {Array} words - Array of words to animate
+ * @param {String} id - ID of the element to animate
+ * @param {Array} colors - Array of colors to use for the animation
+ * @returns {void}
+ */
 function consoleText(words, id, colors) {
   if (colors === undefined) colors = ["#fff"];
   var visible = true;
