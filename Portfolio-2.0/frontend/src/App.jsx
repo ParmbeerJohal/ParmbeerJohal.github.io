@@ -1,10 +1,10 @@
 // src/App.jsx
-import React from 'react';
-import Header from './components/Header';
-import Chatbot from './components/Chatbot';
-import ProjectGallery from './components/ProjectGallery';
-import SkillVisualization from './components/SkillVisualization';
-import Footer from './components/Footer';
+import React from "react";
+import Header from "./components/Header";
+import Chatbot from "./components/Chatbot";
+import ProjectGallery from "./components/ProjectGallery";
+import SkillVisualization from "./components/SkillVisualization";
+import Footer from "./components/Footer";
 
 function App() {
   return (
