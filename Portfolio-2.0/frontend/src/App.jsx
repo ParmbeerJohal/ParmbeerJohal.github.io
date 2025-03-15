@@ -22,22 +22,22 @@ function App() {
       {/* Main content */}
       <main className="flex-grow container mx-auto p-4">
         {/* About Me Section */}
-        <section className="mb-12">
+        <section id="about" className="mb-12">
           <AboutMe />
         </section>
         
         {/* Work Experience Section */}
-        <section className="mb-12">
+        <section id="experience" className="mb-12">
           <WorkExperience />
         </section>
         
         {/* Project Gallery Section */}
-        <section className="mb-12">
+        <section id="projects" className="mb-12">
           <ProjectGallery />
         </section>
         
         {/* Skill Visualization Section */}
-        <section className="mb-12">
+        <section id="skills" className="mb-12">
           <SkillVisualization />
         </section>
       </main>

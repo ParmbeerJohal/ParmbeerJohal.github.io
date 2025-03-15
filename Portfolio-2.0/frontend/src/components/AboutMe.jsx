@@ -1,5 +1,6 @@
 import React from "react";
-import profilePic from "../assets/profile-photo.png"; // Adjust path as needed
+import profilePic from "../assets/profile-photo.png";
+import resume from "../assets/resume.pdf";
 
 function AboutMe() {
   return (
@@ -55,7 +56,7 @@ function AboutMe() {
           {/* Call to Action */}
           <div className="mt-6 flex gap-4">
             <a 
-              href="/path/to/your/resume.pdf" 
+              href={resume}
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors inline-flex items-center"
               target="_blank" 
               rel="noopener noreferrer"
