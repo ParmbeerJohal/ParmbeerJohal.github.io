@@ -1,4 +1,3 @@
-import React from "react";
 import profilePic from "../assets/profile-photo.png";
 import resume from "../assets/resume.pdf";
 

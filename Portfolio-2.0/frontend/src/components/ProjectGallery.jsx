@@ -1,5 +1,5 @@
 // src/components/ProjectGallery.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { projects } from "../mock/projects";
 

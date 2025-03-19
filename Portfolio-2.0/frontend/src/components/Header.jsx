@@ -1,5 +1,5 @@
 // src/components/Header.jsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function Header() {
   const [scrolled, setScrolled] = useState(false);

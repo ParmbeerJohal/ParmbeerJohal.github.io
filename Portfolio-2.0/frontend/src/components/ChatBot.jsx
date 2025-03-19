@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import bitmojiTalking from "../assets/bitmoji-talk.gif"; // Adjust path as needed
 
 function Chatbot() {
