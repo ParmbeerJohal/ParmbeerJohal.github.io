@@ -22,7 +22,7 @@ function App() {
       {/* Main content */}
       <main className="flex-grow container mx-auto p-4">
         {/* About Me Section */}
-        <section id="about" className="mb-12">
+        <section id="about" className="mb-12 mt-20">
           <AboutMe />
         </section>
         
