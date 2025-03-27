@@ -1,4 +1,7 @@
 import { useState } from "react";
+import frescheLogo from "../assets/fresche-logo.jpeg";
+import dhlLogo from "../assets/dhl-logo.png";
+import revStatusLogo from "../assets/rev-status-logo.jpg";
 
 function WorkExperience() {
   const [activeJob, setActiveJob] = useState(null);
@@ -6,10 +9,10 @@ function WorkExperience() {
   const experiences = [
     {
       id: 1,
-      company: "Company A",
-      role: "Senior Developer",
-      period: "2022 - Present",
-      logo: "/path/to/companyA-logo.png", // Replace with your actual logo path
+      company: "Fresche Solutions",
+      role: "Web Application Developer",
+      period: "November 2020 - Present",
+      logo: frescheLogo,
       description: "Led development of innovative web applications using modern technologies.",
       achievements: [
         "Spearheaded a project that increased user engagement by 40%",
@@ -21,10 +24,10 @@ function WorkExperience() {
     },
     {
       id: 2,
-      company: "Company B",
+      company: "Digital Health Lab, University of Victoria",
       role: "Full Stack Developer",
-      period: "2020 - 2022",
-      logo: "/path/to/companyB-logo.png", // Replace with your actual logo path
+      period: "July 2020 - November 2020",
+      logo: dhlLogo,
       description: "Developed and maintained multiple web applications for clients in various industries.",
       achievements: [
         "Built an e-commerce platform with 99.9% uptime",
@@ -36,10 +39,10 @@ function WorkExperience() {
     },
     {
       id: 3,
-      company: "Company C",
-      role: "Junior Developer",
+      company: "Rev Status",
+      role: "Web Developer",
       period: "2018 - 2020",
-      logo: "/path/to/companyC-logo.png", // Replace with your actual logo path
+      logo: revStatusLogo,
       description: "Started my professional journey developing web applications and learning from experienced team members.",
       achievements: [
         "Contributed to a major feature that received positive client feedback",
