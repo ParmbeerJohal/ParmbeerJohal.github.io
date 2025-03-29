@@ -149,7 +149,6 @@ function WorkExperience() {
                   w-16 h-16 rounded-full shadow-lg mb-4 overflow-hidden
                   bg-white p-2 border-2 ${getColorClasses(exp.color).border}
                   ${activeJob === exp.id ? 'animate-pulse' : ''}
-                  ${index % 2 === 1 ? 'self-star' : 'self-start'}
                 `}>
                   <img 
                     src={exp.logo} 
@@ -172,7 +171,8 @@ function WorkExperience() {
                 {/* Extended content that shows on click */}
                 <div 
                   className={`
-                    bg-white rounded-lg shadow-md p-6 border-l-4 ${getColorClasses(exp.color).border}
+                    bg-white rounded-lg shadow-md p-6 text-left w-full
+                    ${index % 2 === 0 ? 'border-l-4' : 'border-r-4'} ${getColorClasses(exp.color).border}
                     transition-all duration-300 overflow-hidden 
                     ${activeJob === exp.id ? 'max-h-96 opacity-100 mt-4 mb-6' : 'max-h-0 opacity-0 pointer-events-none'}
                   `}
@@ -180,7 +180,7 @@ function WorkExperience() {
                   <p className="text-gray-700 mb-4">{exp.description}</p>
                   
                   <h5 className="font-semibold text-gray-800 mb-2">Key Achievements:</h5>
-                  <ul className="list-disc pl-5 mb-4 text-gray-700">
+                  <ul className={`list-disc pl-5 mb-4 text-gray-700 ${index % 2 === 1 ? 'pr-5 list-inside' : 'pl-5'}`}>
                     {exp.achievements.map((achievement, i) => (
                       <li key={i}>{achievement}</li>
                     ))}
@@ -188,7 +188,7 @@ function WorkExperience() {
                   
                   <div className="mt-3">
                     <h5 className="font-semibold text-gray-800 mb-2">Skills Used:</h5>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 justify-start">
                       {exp.skills.map(skill => (
                         <span 
                           key={skill}
@@ -207,10 +207,17 @@ function WorkExperience() {
                     onClick={() => handleJobClick(exp.id)}
                     className={`mt-2 text-sm ${getColorClasses(exp.color).hoverText} font-medium flex items-center`}
                   >
+                    {index % 2 === 1 && (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
                     <span>View details</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
+                    {index % 2 === 0 && (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
                   </button>
                 )}
               </div>
