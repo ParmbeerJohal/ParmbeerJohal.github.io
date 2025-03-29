@@ -2,6 +2,7 @@ import { useState } from "react";
 import frescheLogo from "../assets/fresche-logo.jpeg";
 import dhlLogo from "../assets/dhl-logo.png";
 import revStatusLogo from "../assets/rev-status-logo.jpg";
+import { hover } from "framer-motion";
 
 function WorkExperience() {
   const [activeJob, setActiveJob] = useState(null);
@@ -20,7 +21,7 @@ function WorkExperience() {
         "Implemented CI/CD pipeline reducing deployment time by 60%"
       ],
       skills: ["React", "Node.js", "AWS"],
-      color: "blue"
+      color: "cyan"
     },
     {
       id: 2,
@@ -35,7 +36,7 @@ function WorkExperience() {
         "Collaborated with UX designers to improve customer experience"
       ],
       skills: ["JavaScript", "Python", "Docker"],
-      color: "green"
+      color: "indigo"
     },
     {
       id: 3,
@@ -50,13 +51,62 @@ function WorkExperience() {
         "Recognized as 'Rising Star' employee in 2019"
       ],
       skills: ["HTML/CSS", "JavaScript", "Git"],
-      color: "purple"
+      color: "yellow"
     }
   ];
 
   // Function to handle clicking on a job node
   const handleJobClick = (id) => {
     setActiveJob(activeJob === id ? null : id);
+  };
+
+  const getColorClasses = (colorName) => {
+    switch(colorName) {
+      case 'cyan':
+        return {
+          bg: 'bg-cyan-500',
+          hoverBg: 'hover:bg-cyan-600',
+          text: 'text-cyan-600',
+          hoverText: 'hover:text-cyan-800',
+          border: 'border-cyan-500',
+          borderLight: 'border-cyan-200',
+          bgLight: 'bg-cyan-100',
+          textDark: 'text-cyan-800'
+        };
+      case 'indigo':
+        return {
+          bg: 'bg-indigo-700',
+          hoverBg: 'hover:bg-indigo-800',
+          text: 'text-indigo-600',
+          hoverText: 'hover:text-indigo-800',
+          border: 'border-indigo-800',
+          borderLight: 'border-indigo-200',
+          bgLight: 'bg-indigo-100',
+          textDark: 'text-indigo-950'
+        };
+      case 'yellow':
+        return {
+          bg: 'bg-yellow-500',
+          hoverBg: 'hover:bg-yellow-600',
+          text: 'text-yellow-600',
+          hoverText: 'hover:text-yellow-800',
+          border: 'border-yellow-500',
+          borderLight: 'border-yellow-200',
+          bgLight: 'bg-yellow-100',
+          textDark: 'text-yellow-800'
+        };
+      default:
+        return {
+          bg: 'bg-gray-500',
+          hoverBg: 'hover:bg-gray-600',
+          text: 'text-gray-600',
+          hoverText: 'hover:text-gray-800',
+          border: 'border-gray-500',
+          borderLight: 'border-gray-200',
+          bgLight: 'bg-gray-100',
+          textDark: 'text-gray-800'
+        };
+    }
   };
 
   return (
@@ -81,7 +131,7 @@ function WorkExperience() {
               <div 
                 className={`absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full cursor-pointer
                   border-4 border-white shadow-lg transition-all duration-300
-                  bg-${exp.color}-500 hover:bg-${exp.color}-600 ${activeJob === exp.id ? 'scale-125' : ''}`}
+                  ${getColorClasses(exp.color).bg} ${getColorClasses(exp.color).hoverBg} ${activeJob === exp.id ? 'scale-125' : ''}`}
                 onClick={() => handleJobClick(exp.id)}
               />
               
@@ -97,9 +147,9 @@ function WorkExperience() {
                 <div className={`
                   relative ${index % 2 === 0 ? "left-0" : "right-0"}
                   w-16 h-16 rounded-full shadow-lg mb-4 overflow-hidden
-                  bg-white p-2 border-2 border-${exp.color}-200
+                  bg-white p-2 border-2 ${getColorClasses(exp.color).border}
                   ${activeJob === exp.id ? 'animate-pulse' : ''}
-                  ${index % 2 === 1 ? 'self-end' : 'self-start'}
+                  ${index % 2 === 1 ? 'self-star' : 'self-start'}
                 `}>
                   <img 
                     src={exp.logo} 
@@ -114,7 +164,7 @@ function WorkExperience() {
                 
                 {/* Job Title and Period */}
                 <div className={`mb-2 ${index % 2 === 1 ? 'text-right' : 'text-left'}`}>
-                  <h3 className={`text-xl font-bold text-${exp.color}-600`}>{exp.role}</h3>
+                  <h3 className={`text-xl font-bold ${getColorClasses(exp.color).text}`}>{exp.role}</h3>
                   <h4 className="text-lg font-semibold text-gray-700">{exp.company}</h4>
                   <p className="text-sm text-gray-500">{exp.period}</p>
                 </div>
@@ -122,7 +172,7 @@ function WorkExperience() {
                 {/* Extended content that shows on click */}
                 <div 
                   className={`
-                    bg-white rounded-lg shadow-md p-6 border-l-4 border-${exp.color}-500
+                    bg-white rounded-lg shadow-md p-6 border-l-4 ${getColorClasses(exp.color).border}
                     transition-all duration-300 overflow-hidden 
                     ${activeJob === exp.id ? 'max-h-96 opacity-100 mt-4 mb-6' : 'max-h-0 opacity-0 pointer-events-none'}
                   `}
@@ -142,7 +192,7 @@ function WorkExperience() {
                       {exp.skills.map(skill => (
                         <span 
                           key={skill}
-                          className={`bg-${exp.color}-100 text-${exp.color}-800 px-3 py-1 rounded-full text-sm`}
+                          className={`${getColorClasses(exp.color).bgLight} ${getColorClasses(exp.color).text} px-3 py-1 rounded-full text-sm`}
                         >
                           {skill}
                         </span>
@@ -155,7 +205,7 @@ function WorkExperience() {
                 {activeJob !== exp.id && (
                   <button 
                     onClick={() => handleJobClick(exp.id)}
-                    className={`mt-2 text-sm text-${exp.color}-600 hover:text-${exp.color}-800 font-medium flex items-center`}
+                    className={`mt-2 text-sm ${getColorClasses(exp.color).hoverText} font-medium flex items-center`}
                   >
                     <span>View details</span>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
