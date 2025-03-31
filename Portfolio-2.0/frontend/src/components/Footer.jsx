@@ -85,19 +85,10 @@ function Footer() {
         </div>
         
         {/* Copyright and Back to Top */}
-        <div className="pt-8 mt-8 border-t border-blue-700 flex flex-col md:flex-row justify-between items-center">
+        <div className="pt-4 border-t border-blue-700 flex flex-col md:flex-row justify-center items-center">
           <p className="mb-4 md:mb-0">
             &copy; {currentYear} Parm Johal. All rights reserved.
           </p>
-          <a 
-            href="#top" 
-            className="inline-flex items-center text-blue-200 hover:text-white transition-colors"
-          >
-            Back to top
-            <svg className="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-          </a>
         </div>
       </div>
     </footer>

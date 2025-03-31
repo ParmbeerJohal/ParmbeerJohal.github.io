@@ -5,7 +5,6 @@ import AboutMe from "./components/AboutMe";
 import WorkExperience from "./components/WorkExperience";
 import Chatbot from "./components/Chatbot";
 import ProjectGallery from "./components/ProjectGallery";
-import SkillVisualization from "./components/SkillVisualization";
 import Footer from "./components/Footer";
 
 function App() {
@@ -34,11 +33,6 @@ function App() {
         {/* Project Gallery Section */}
         <section id="projects" className="mb-12">
           <ProjectGallery />
-        </section>
-        
-        {/* Skill Visualization Section */}
-        <section id="skills" className="mb-12">
-          <SkillVisualization />
         </section>
       </main>
       <Footer />

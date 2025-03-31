@@ -16,7 +16,7 @@ function Header() {
       }
       
       // Determine which section is currently in view
-      const sections = ["about", "experience", "projects", "skills"];
+      const sections = ["about", "experience", "projects"];
       const sectionElements = sections.map(id => document.getElementById(id));
       
       for (let i = sectionElements.length - 1; i >= 0; i--) {
@@ -74,8 +74,7 @@ function Header() {
             {[
               { id: 'about', label: 'About' },
               { id: 'experience', label: 'Experience' },
-              { id: 'projects', label: 'Projects' },
-              { id: 'skills', label: 'Skills' }
+              { id: 'projects', label: 'Projects' }
             ].map((item) => (
               <li key={item.id}>
                 <button
