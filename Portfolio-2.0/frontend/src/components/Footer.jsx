@@ -30,34 +30,6 @@ function Footer() {
         console.error('Failed to copy text: ', err);
       });
   };
-  
-  // Social media links
-  const socialLinks = [
-    { 
-      name: "GitHub",
-      href: "https://github.com/ParmbeerJohal",
-      icon: <FontAwesomeIcon icon={faGithub} size="xl" />,
-      action: null
-    },
-    { 
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/parm-johal-7144a1184/",
-      icon: <FontAwesomeIcon icon={faLinkedin} size="xl" />,
-      action: null
-    },
-    { 
-      name: "Email",
-      tooltipText: copiedEmail ? "Copied!" : "Click to copy email",
-      icon: <FontAwesomeIcon icon={copiedEmail ? faCheck : faEnvelope} size="xl" />,
-      action: () => copyToClipboard(contactDetails.email, 'email')
-    },
-    { 
-      name: "Phone",
-      tooltipText: copiedPhone ? "Copied!" : "Click to copy phone",
-      icon: <FontAwesomeIcon icon={copiedPhone ? faCheck : faPhone} size="xl" />,
-      action: () => copyToClipboard(contactDetails.phone, 'phone')
-    },
-  ];
 
   // Scroll to top function
   const scrollToTop = () => {
@@ -69,64 +41,42 @@ function Footer() {
 
   return (
     <footer className="relative">      
+      {/* Main Footer Content */}
       <div className="bg-gradient-to-r from-blue-800 to-blue-900 text-white">
         <div className="container mx-auto px-6 pt-6 pb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-0 md:p-8">
+            {/* Left Column - Social Links */}
             <div className="text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start mb-6">
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white mr-4">
-                  <img 
-                    src="/path/to/your-profile-pic.jpg"
-                    alt="Parm Johal"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = 'https://via.placeholder.com/100?text=PJ';
-                    }}
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold">Parm Johal</h3>
-                  <p className="text-blue-200 text-sm">Software Developer</p>
-                </div>
-              </div>
+              <h4 className="text-xl font-bold mb-6 text-white">Connect With Me</h4>
               
               <p className="text-blue-100 mb-6 max-w-md mx-auto md:mx-0">
                 Passionate about creating elegant solutions to complex problems through software development.
               </p>
               
               <div className="flex space-x-6 justify-center md:justify-start">
-                {socialLinks.map((link, index) => (
-                  <div key={index} className="relative group">
-                    {link.action ? (
-                      <button
-                        onClick={link.action}
-                        className="text-blue-200 hover:text-white transition-colors focus:outline-none transform hover:scale-110"
-                        aria-label={link.name}
-                      >
-                        {link.icon}
-                      </button>
-                    ) : (
-                      <a 
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-200 hover:text-white transition-colors transform hover:scale-110"
-                        aria-label={link.name}
-                      >
-                        {link.icon}
-                      </a>
-                    )}
-                    
-                    {/* Enhanced Tooltip */}
-                    {link.tooltipText && (
-                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-800 text-xs text-white rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none shadow-lg">
-                        {link.tooltipText}
-                        <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                {/* GitHub Link */}
+                <a 
+                  href="https://github.com/ParmbeerJohal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-200 hover:text-white transition-colors transform hover:scale-110"
+                  title="GitHub Profile"
+                  aria-label="GitHub Profile"
+                >
+                  <FontAwesomeIcon icon={faGithub} size="xl" />
+                </a>
+                
+                {/* LinkedIn Link */}
+                <a 
+                  href="https://www.linkedin.com/in/parm-johal-7144a1184/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-200 hover:text-white transition-colors transform hover:scale-110"
+                  title="LinkedIn Profile"
+                  aria-label="LinkedIn Profile"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} size="xl" />
+                </a>
               </div>
             </div>
             
