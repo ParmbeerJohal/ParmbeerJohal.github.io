@@ -3,6 +3,8 @@ import frescheLogo from "../assets/fresche-logo.jpeg";
 import dhlLogo from "../assets/dhl-logo.png";
 import revStatusLogo from "../assets/rev-status-logo.jpg";
 import { hover } from "framer-motion";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 
 function WorkExperience() {
   const [activeJob, setActiveJob] = useState(null);
@@ -205,18 +207,14 @@ function WorkExperience() {
                 {activeJob !== exp.id && (
                   <button 
                     onClick={() => handleJobClick(exp.id)}
-                    className={`mt-2 text-sm ${getColorClasses(exp.color).hoverText} font-medium flex items-center`}
+                    className={`mt-2 text-sm ${getColorClasses(exp.color).hoverText} font-medium flex items-center cursor-pointer`}
                   >
                     {index % 2 === 1 && (
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
+                      <FontAwesomeIcon icon={faCaretDown} className="mr-1" />
                     )}
                     <span>View details</span>
                     {index % 2 === 0 && (
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
+                      <FontAwesomeIcon icon={faCaretDown} className="ml-1" />
                     )}
                   </button>
                 )}

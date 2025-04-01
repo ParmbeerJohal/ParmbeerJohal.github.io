@@ -95,11 +95,11 @@ function Footer() {
                       <span className="text-white">{contactDetails.email}</span>
                       <button 
                         onClick={() => copyToClipboard(contactDetails.email, 'email')}
-                        className={`ml-2 p-1 rounded-md ${copiedEmail ? 'bg-green-500' : 'bg-blue-700/50 hover:bg-blue-600/50'} transition-colors`}
+                        className={`ml-2 p-1 rounded-md ${copiedEmail ? 'bg-green-500' : 'bg-blue-700/50 hover:bg-blue-600/50 cursor-pointer'} transition-colors`}
                         title="Copy to clipboard"
                         aria-label="Copy email to clipboard"
                       >
-                        <FontAwesomeIcon icon={copiedEmail ? faCheck : faCopy} size="sm" className="text-white" />
+                        <FontAwesomeIcon icon={copiedEmail ? faCheck : faCopy} size="md" className="text-white" />
                       </button>
                     </div>
                   </div>
@@ -115,11 +115,11 @@ function Footer() {
                       <span className="text-white">{contactDetails.phone}</span>
                       <button 
                         onClick={() => copyToClipboard(contactDetails.phone, 'phone')}
-                        className={`ml-2 p-1 rounded-md ${copiedPhone ? 'bg-green-500' : 'bg-blue-700/50 hover:bg-blue-600/50'} transition-colors`}
+                        className={`ml-2 p-1 rounded-md ${copiedPhone ? 'bg-green-500' : 'bg-blue-700/50 hover:bg-blue-600/50 cursor-pointer'} transition-colors`}
                         title="Copy to clipboard"
                         aria-label="Copy phone to clipboard"
                       >
-                        <FontAwesomeIcon icon={copiedPhone ? faCheck : faCopy} size="sm" className="text-white" />
+                        <FontAwesomeIcon icon={copiedPhone ? faCheck : faCopy} size="md" className="text-white" />
                       </button>
                     </div>
                   </div>
@@ -135,7 +135,7 @@ function Footer() {
             </p>
             <button 
               onClick={scrollToTop} 
-              className="flex items-center gap-2 bg-blue-700/30 hover:bg-blue-700/50 text-white px-4 py-2 rounded-full transition-colors"
+              className="flex items-center gap-2 bg-blue-700/30 hover:bg-blue-700/50 text-white px-4 py-2 rounded-full transition-colors cursor-pointer"
               aria-label="Scroll to top"
             >
               <span>Back to top</span>

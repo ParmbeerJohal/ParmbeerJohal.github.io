@@ -42,7 +42,7 @@ function ProjectGallery() {
             <button 
               key={tech}
               onClick={() => setFilter(filter === tech ? "" : tech)}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                 filter === tech 
                   ? 'bg-blue-500 text-white' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -58,7 +58,7 @@ function ProjectGallery() {
         {filteredProjects.map((project) => (
           <motion.div
             key={project.id}
-            className="bg-white overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
+            className="bg-white overflow-hidden rounded-xl shadow-lg hover:shadow-xl flex flex-col"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -132,7 +132,7 @@ function ProjectGallery() {
           <p className="text-gray-500 text-lg">No projects found with that technology.</p>
           <button 
             onClick={() => setFilter("")} 
-            className="mt-2 text-blue-500 hover:text-blue-700"
+            className="mt-2 text-blue-500 hover:text-blue-700 cursor-pointer"
           >
             Clear filter
           </button>
