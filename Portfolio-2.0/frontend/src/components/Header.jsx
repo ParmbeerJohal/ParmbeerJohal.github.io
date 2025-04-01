@@ -1,8 +1,9 @@
-// src/components/Header.jsx
 import { useState, useEffect } from "react";
+import profilePic from "../assets/profile-photo.png";
 
 function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
 
   // Handle scroll events for header styling and active section tracking
@@ -13,6 +14,14 @@ function Header() {
         setScrolled(true);
       } else {
         setScrolled(false);
+      }
+      
+      // Check if we've scrolled past the profile picture in AboutMe
+      const aboutMeProfilePic = document.querySelector('#about .rounded-full');
+      if (aboutMeProfilePic) {
+        const profileRect = aboutMeProfilePic.getBoundingClientRect();
+        // Show the logo and name when the profile pic is fully out of view (top of pic is above viewport)
+        setShowProfile(profileRect.bottom < 0);
       }
       
       // Determine which section is currently in view
@@ -32,6 +41,8 @@ function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
+    // Run once on mount to set initial states
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -53,11 +64,11 @@ function Header() {
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        {/* Logo and Name */}
-        <div className="flex items-center space-x-2">
+        {/* Logo and Name - conditionally rendered */}
+        <div className={`flex items-center space-x-2 transition-opacity duration-300 ${showProfile ? 'opacity-100' : 'opacity-0'}`}>
           <div className={`w-10 h-10 rounded-full overflow-hidden border-2 ${scrolled ? 'border-blue-500' : 'border-white'}`}>
             <img 
-              src="/path/to/your/logo-or-avatar.png" // Replace with your image
+              src={profilePic}
               alt="Parm Johal"
               className="w-full h-full object-cover"
             />
@@ -69,7 +80,7 @@ function Header() {
         </div>
 
         {/* Navigation */}
-        <nav className="hidden md:flex">
+        <nav className={`hidden md:flex ${showProfile ? '' : 'mx-auto'}`}>
           <ul className="flex space-x-6">
             {[
               { id: 'about', label: 'About' },
