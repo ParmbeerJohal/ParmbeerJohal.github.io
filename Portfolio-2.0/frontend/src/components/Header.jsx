@@ -5,6 +5,7 @@ function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Handle scroll events for header styling and active section tracking
   useEffect(() => {
@@ -23,6 +24,15 @@ function Header() {
         // Show the logo and name when the profile pic is fully out of view (top of pic is above viewport)
         setShowProfile(profileRect.bottom < 0);
       }
+      
+      // Calculate scroll progress
+      const scrollTop = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      
+      // This formula calculates what percentage of the scrollable content has been scrolled
+      const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+      setScrollProgress(scrollPercentage);
       
       // Determine which section is currently in view
       const sections = ["about", "experience", "projects"];
@@ -121,7 +131,7 @@ function Header() {
         <div 
           className="h-full bg-blue-500 transition-all"
           style={{ 
-            width: `${Math.min((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100, 100)}%` 
+            width: `${Math.min(scrollProgress, 100)}%` 
           }}
         ></div>
       </div>
