@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import bitmojiTalking from "../assets/bitmoji-talk.gif"; // Adjust path as needed
+import bitmojiTalking from "../assets/bitmoji-talk.gif";
 
 function Chatbot() {
   const [messages, setMessages] = useState([]);
@@ -18,8 +18,8 @@ function Chatbot() {
     // Add user message
     setMessages([...messages, { text: input, sender: "user" }]);
 
-    // You can implement actual chatbot logic here
-    // For now, let's just echo back a response
+    // TODO: Replace with actual bot response logic
+    // from backend or AI model
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
