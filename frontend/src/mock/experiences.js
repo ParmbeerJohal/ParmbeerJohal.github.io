@@ -45,7 +45,7 @@ export const experiences = [
     logo: revStatusLogo,
     description: "",
     achievements: [
-        "Increased user traffic by created a landing page for the client using HTML, CSS, and JavaScript/JQuery",
+        "Increased user traffic by creating a landing page for the client using HTML, CSS, and JavaScript/JQuery",
         "Set up weekly meetings to maintain consistent communication for the client’s requirements",
     ],
     skills: ["HTML", "CSS", "JavaScript", "Git"],

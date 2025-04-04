@@ -60,15 +60,6 @@ function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle clicks outside mobile menu to close it
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
-        setMobileMenuOpen(false);
-      }
-    }
-  }, [mobileMenuOpen]);
-
   // Toggle mobile menu
   const toggleMobileMenu = (e) => {
     setMobileMenuOpen(!mobileMenuOpen);
