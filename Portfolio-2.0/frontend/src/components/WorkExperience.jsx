@@ -76,7 +76,7 @@ function WorkExperience() {
             <div 
               key={exp.id}
               className={`mb-16 relative ${
-                index % 2 === 0 ? "text-left" : "text-right"
+                index % 2 === 0 || window.innerWidth < 640 ? "text-left" : "text-right"
               }`}
             >
               {/* Timeline node */}
@@ -92,7 +92,7 @@ function WorkExperience() {
                 className={`${
                   index % 2 === 0 
                   ? "ml-8 pl-8 sm:ml-12 sm:pl-12 pr-4 sm:pr-0" 
-                  : "mr-8 pr-8 sm:mr-12 sm:pr-12 pl-4 sm:pl-0 flex flex-col items-end"
+                  : "ml-8 pl-8 sm:mr-12 sm:pr-12 sm:pl-0 sm:text-right sm:flex sm:flex-col sm:items-end"
                 }`}
               >
                 {/* Job Ball */}
@@ -123,18 +123,18 @@ function WorkExperience() {
                 {/* Extended content that shows on click */}
                 <div 
                   className={`
-                    bg-white rounded-lg shadow-md p-6 text-left w-full
+                    bg-white rounded-lg shadow-md p-4 sm:p-6 text-left w-full
                     ${index % 2 === 0 ? 'border-l-4' : 'border-r-4'} ${getColorClasses(exp.color).border}
-                    transition-all duration-300 overflow-hidden 
-                    ${activeJob === exp.id ? 'max-h-96 opacity-100 mt-4 mb-6' : 'max-h-0 opacity-0 pointer-events-none'}
+                    transition-all duration-500 ease-in-out
+                    ${activeJob === exp.id ? 'opacity-100 mt-4 mb-6' : 'opacity-0 h-0 py-0 overflow-hidden pointer-events-none'}
                   `}
                 >
                   <p className="text-gray-700 mb-4">{exp.description}</p>
                   
                   <h5 className="font-semibold text-gray-800 mb-2">Key Achievements:</h5>
-                  <ul className={`list-disc pl-5 mb-4 text-gray-700 ${index % 2 === 1 ? 'pr-5 list-inside' : 'pl-5'}`}>
+                  <ul className={`list-disc text-gray-700 mb-4 ${index % 2 === 1 ? 'list-inside' : 'pl-5'}`}>
                     {exp.achievements.map((achievement, i) => (
-                      <li key={i}>{achievement}</li>
+                      <li key={i} className="mb-2">{achievement}</li>
                     ))}
                   </ul>
                   
@@ -144,7 +144,7 @@ function WorkExperience() {
                       {exp.skills.map(skill => (
                         <span 
                           key={skill}
-                          className={`${getColorClasses(exp.color).bgLight} ${getColorClasses(exp.color).text} px-3 py-1 rounded-full text-sm`}
+                          className={`${getColorClasses(exp.color).bgLight} ${getColorClasses(exp.color).text} px-2 py-1 rounded-full text-xs sm:text-sm`}
                         >
                           {skill}
                         </span>
