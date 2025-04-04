@@ -1,61 +1,11 @@
 import { useState } from "react";
-import frescheLogo from "../assets/fresche-logo.jpeg";
-import dhlLogo from "../assets/dhl-logo.png";
-import revStatusLogo from "../assets/rev-status-logo.jpg";
 import { hover } from "framer-motion";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { experiences } from "../mock/experiences";
 
 function WorkExperience() {
   const [activeJob, setActiveJob] = useState(null);
-  
-  const experiences = [
-    {
-      id: 1,
-      company: "Fresche Solutions",
-      role: "Web Application Developer",
-      period: "November 2020 - Present",
-      logo: frescheLogo,
-      description: "Led development of innovative web applications using modern technologies.",
-      achievements: [
-        "Spearheaded a project that increased user engagement by 40%",
-        "Mentored junior developers and led technical meetings",
-        "Implemented CI/CD pipeline reducing deployment time by 60%"
-      ],
-      skills: ["React", "Node.js", "AWS"],
-      color: "cyan"
-    },
-    {
-      id: 2,
-      company: "Digital Health Lab, University of Victoria",
-      role: "Full Stack Developer",
-      period: "July 2020 - November 2020",
-      logo: dhlLogo,
-      description: "Developed and maintained multiple web applications for clients in various industries.",
-      achievements: [
-        "Built an e-commerce platform with 99.9% uptime",
-        "Optimized database queries resulting in 50% faster load times",
-        "Collaborated with UX designers to improve customer experience"
-      ],
-      skills: ["JavaScript", "Python", "Docker"],
-      color: "indigo"
-    },
-    {
-      id: 3,
-      company: "Rev Status",
-      role: "Web Developer",
-      period: "2018 - 2020",
-      logo: revStatusLogo,
-      description: "Started my professional journey developing web applications and learning from experienced team members.",
-      achievements: [
-        "Contributed to a major feature that received positive client feedback",
-        "Reduced bug count by 30% through improved testing procedures",
-        "Recognized as 'Rising Star' employee in 2019"
-      ],
-      skills: ["HTML/CSS", "JavaScript", "Git"],
-      color: "yellow"
-    }
-  ];
 
   // Function to handle clicking on a job node
   const handleJobClick = (id) => {

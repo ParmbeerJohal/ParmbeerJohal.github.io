@@ -26,7 +26,7 @@ function Header() {
       if (aboutMeProfilePic) {
         const profileRect = aboutMeProfilePic.getBoundingClientRect();
         // Show the logo and name when the profile pic is fully out of view (top of pic is above viewport)
-        setShowProfile(profileRect.bottom < 0);
+        setShowProfile(profileRect.top < 0);
       }
       
       // Calculate scroll progress
@@ -109,7 +109,7 @@ function Header() {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className={`hidden md:flex ${showProfile ? '' : 'mx-auto'}`}>
+        <nav className="hidden md:flex">
           <ul className="flex space-x-6">
             {[
               { id: 'about', label: 'About' },
