@@ -53,7 +53,7 @@ function Footer() {
                 Passionate about creating elegant solutions to complex problems through software development.
               </p>
               
-              <div className="flex space-x-6 justify-center md:justify-start">
+              <div className="flex items-center space-x-6 justify-center md:justify-start mb-4">
                 {/* GitHub Link */}
                 <a 
                   href="https://github.com/ParmbeerJohal"
@@ -76,6 +76,17 @@ function Footer() {
                   aria-label="LinkedIn Profile"
                 >
                   <FontAwesomeIcon icon={faLinkedin} size="xl" />
+                </a>
+                
+                {/* Previous Portfolio - integrated with social links */}
+                <a 
+                  href="https://parmbeerjohal.github.io/v1-legacy-portfolio/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sm text-blue-300 hover:text-white border border-blue-600 rounded-md px-3 py-1 transition-all hover:border-white"
+                  aria-label="Previous portfolio website"
+                >
+                  Previous Portfolio (Version 1)
                 </a>
               </div>
             </div>
