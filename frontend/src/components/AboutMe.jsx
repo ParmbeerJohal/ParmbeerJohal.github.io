@@ -48,7 +48,7 @@ function AboutMe() {
           <div className="mt-6">
             <h4 className="text-lg font-semibold mb-2">Core Skills:</h4>
             <div className="flex flex-wrap gap-2">
-              {["JavaScript", "React", "Node.js", "Python", "Tailwind CSS", "Docker", "Azure"].map((skill) => (
+              {["JavaScript", "React", "Node.js", "Java", "Python", "Tailwind CSS", "Docker", "Azure"].map((skill) => (
                 <span 
                   key={skill} 
                   className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"

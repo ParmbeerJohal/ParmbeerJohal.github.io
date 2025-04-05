@@ -70,7 +70,7 @@ function ProjectGallery() {
               <div className="md:w-1/2 p-5 flex flex-col justify-between">
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-gray-800">{project.title}</h3>
-                  <p className="text-gray-600 mb-3 line-clamp-3">{project.description}</p>
+                  <p className="text-gray-600 mb-3 line-clamp-6">{project.description}</p>
                   
                   {/* Tech Stack Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -94,7 +94,7 @@ function ProjectGallery() {
                       rel="noopener noreferrer"
                       className="flex items-center text-gray-700 hover:text-blue-600 transition-colors"
                     >
-                      <p className="pr-3">Live Demo</p> <FontAwesomeIcon icon={faExternalLinkAlt} size="xl" />
+                      <p className="pr-3">Live Demo (In Progress)</p> <FontAwesomeIcon icon={faExternalLinkAlt} size="xl" />
                     </a>
                   )}
                 </div>
