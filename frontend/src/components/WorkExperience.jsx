@@ -3,6 +3,7 @@ import { hover } from "framer-motion";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { experiences } from "../mock/experiences";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 function WorkExperience() {
   const [activeJob, setActiveJob] = useState(null);
@@ -17,53 +18,49 @@ function WorkExperience() {
       case 'cyan':
         return {
           bg: 'bg-cyan-500',
+          bgLight: 'bg-cyan-100',
           hoverBg: 'hover:bg-cyan-600',
           text: 'text-cyan-600',
-          hoverText: 'hover:text-cyan-800',
-          border: 'border-cyan-500',
-          borderLight: 'border-cyan-200',
-          bgLight: 'bg-cyan-100',
-          textDark: 'text-cyan-800'
+          textLight: 'text-cyan-200',
+          hoverText: 'hover:text-cyan-600',
+          border: 'border-cyan-600',
         };
       case 'indigo':
         return {
           bg: 'bg-indigo-700',
+          bgLight: 'bg-indigo-100',
           hoverBg: 'hover:bg-indigo-800',
           text: 'text-indigo-600',
-          hoverText: 'hover:text-indigo-800',
-          border: 'border-indigo-800',
-          borderLight: 'border-indigo-200',
-          bgLight: 'bg-indigo-100',
-          textDark: 'text-indigo-950'
+          textLight: 'text-indigo-200',
+          hoverText: 'hover:text-indigo-600',
+          border: 'border-indigo-600',
         };
       case 'yellow':
         return {
           bg: 'bg-yellow-500',
+          bgLight: 'bg-yellow-100',
           hoverBg: 'hover:bg-yellow-600',
           text: 'text-yellow-600',
-          hoverText: 'hover:text-yellow-800',
-          border: 'border-yellow-500',
-          borderLight: 'border-yellow-200',
-          bgLight: 'bg-yellow-100',
-          textDark: 'text-yellow-800'
+          textLight: 'text-yellow-200',
+          hoverText: 'hover:text-yellow-600',
+          border: 'border-yellow-600',
         };
       default:
         return {
           bg: 'bg-gray-500',
+          bgLight: 'bg-gray-100',
           hoverBg: 'hover:bg-gray-600',
           text: 'text-gray-600',
-          hoverText: 'hover:text-gray-800',
+          textLight: 'text-gray-200',
+          hoverText: 'hover:text-gray-600',
           border: 'border-gray-500',
-          borderLight: 'border-gray-200',
-          bgLight: 'bg-gray-100',
-          textDark: 'text-gray-800'
         };
     }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-3xl font-bold text-gray-800 mb-10">My Journey</h2>
+    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 transition-colors duration-300">
+      <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-10">My Journey</h2>
 
       {/* Journey Path */}
       <div className="relative">
@@ -116,23 +113,23 @@ function WorkExperience() {
                 {/* Job Title and Period */}
                 <div className={`mb-2 ${index % 2 === 1 ? 'text-right' : 'text-left'}`}>
                   <h3 className={`text-xl font-bold ${getColorClasses(exp.color).text}`}>{exp.role}</h3>
-                  <h4 className="text-lg font-semibold text-gray-700">{exp.company}</h4>
+                  <h4 className="text-lg font-semibold text-gray-700 dark:text-white">{exp.company}</h4>
                   <p className="text-sm text-gray-500">{exp.period}</p>
                 </div>
                 
                 {/* Extended content that shows on click */}
                 <div 
                   className={`
-                    bg-white rounded-lg shadow-md p-4 sm:p-6 text-left w-full
+                    bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 text-left w-full
                     ${index % 2 === 0 ? 'border-l-4' : 'border-r-4'} ${getColorClasses(exp.color).border}
                     transition-all duration-500 ease-in-out
                     ${activeJob === exp.id ? 'opacity-100 mt-4 mb-6' : 'opacity-0 h-0 py-0 overflow-hidden pointer-events-none'}
                   `}
                 >
-                  <p className="text-gray-700 mb-4">{exp.description}</p>
+                  <p className="text-gray-700 dark:text-white mb-4">{exp.description}</p>
                   
                   <h5 className="font-semibold text-gray-800 mb-2">Key Achievements:</h5>
-                  <ul className={`list-disc text-gray-700 mb-4 ${index % 2 === 1 ? 'list-inside' : 'pl-5'}`}>
+                  <ul className={`list-disc text-gray-700 dark:text-white mb-4 ${index % 2 === 1 ? 'list-inside' : 'pl-5'}`}>
                     {exp.achievements.map((achievement, i) => (
                       <li key={i} className="mb-2">{achievement}</li>
                     ))}
@@ -157,8 +154,10 @@ function WorkExperience() {
                 {activeJob !== exp.id && (
                   <button 
                     onClick={() => handleJobClick(exp.id)}
-                    className={`mt-2 text-sm ${getColorClasses(exp.color).hoverText} font-medium flex items-center cursor-pointer`}
-                  >
+                    className={`
+                      mt-2 text-sm dark:text-white ${getColorClasses(exp.color).hoverText} 
+                      dark:${getColorClasses(exp.color).hoverTextLight} font-medium flex items-center cursor-pointer
+                    `}>
                     {index % 2 === 1 && (
                       <FontAwesomeIcon icon={faCaretDown} className="mr-1" />
                     )}

@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+/* Define dark variant for Tailwind CSS 4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Add smooth transitions for theme changes */
+/* html {
+  transition: background-color 0.9s ease;
+}
+
+body {
+  transition: color 5.9s ease, background-color 5.9s ease;
+} */

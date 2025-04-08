@@ -5,8 +5,8 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons'
 
 function AboutMe() {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6">About Me</h2>
+    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 transition-colors duration-300">
+      <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-6">About Me</h2>
       
       <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
         {/* Profile Image */}
@@ -21,9 +21,9 @@ function AboutMe() {
         {/* About Me Content */}
         <div className="flex-1">
           <h3 className="text-2xl font-semibold text-blue-600 mb-3">Parm Johal</h3>
-          <h4 className="text-xl text-gray-600 mb-4">Software Developer</h4>
+          <h4 className="text-xl text-gray-600 dark:text-white mb-4">Software Developer</h4>
           
-          <div className="space-y-4 text-gray-700">
+          <div className="space-y-4 text-gray-700 dark:text-gray-300">
             <p>
             Welcome to my portfolio! I am a full stack developer with over 5 years of experience in developing web and software applications. 
             </p>
@@ -46,7 +46,7 @@ function AboutMe() {
           
           {/* Skills Tags */}
           <div className="mt-6">
-            <h4 className="text-lg font-semibold mb-2">Core Skills:</h4>
+            <h4 className="text-lg font-semibold mb-2 dark:text-white">Core Skills:</h4>
             <div className="flex flex-wrap gap-2">
               {["JavaScript", "React", "Node.js", "Java", "Python", "Tailwind CSS", "Docker", "Azure"].map((skill) => (
                 <span 

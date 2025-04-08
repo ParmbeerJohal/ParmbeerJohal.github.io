@@ -16,7 +16,7 @@ function App() {
   };
   
   return (
-    <div className="min-h-screen flex flex-col relative">
+    <div className="min-h-screen flex flex-col relative dark:bg-gray-800 bg-white transition-all duration-300">
       <Header />
       
       {/* Main content */}

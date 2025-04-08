@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import profilePic from "../assets/profile-photo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faXmark, faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
+import { useDarkMode } from '../context/darkModeContext';
 
 function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -10,6 +11,8 @@ function Header() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
+
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   // Handle scroll events for header styling and active section tracking
   useEffect(() => {
@@ -79,8 +82,8 @@ function Header() {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white text-gray-800 shadow-md py-2' 
-          : 'bg-gradient-to-r from-blue-600 to-blue-800 text-white py-4'
+          ? 'bg-white dark:bg-black text-gray-800 shadow-md py-2' 
+          : 'bg-gradient-to-r from-blue-600 dark:from-gray-800 to-blue-800 text-white py-4'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -94,7 +97,7 @@ function Header() {
             />
           </div>
           <div>
-            <h1 className="text-xl md:text-2xl font-bold">Parm Johal</h1>
+            <h1 className="text-xl md:text-2xl font-bold dark:text-blue-100">Parm Johal</h1>
             <p className={`text-xs ${scrolled ? 'text-blue-600' : 'text-blue-100'}`}>Software Developer</p>
           </div>
         </div>
@@ -113,7 +116,7 @@ function Header() {
                   className={`relative px-1 py-2 transition-colors duration-300 cursor-pointer ${
                     activeSection === item.id
                       ? scrolled ? 'text-blue-600 font-medium' : 'font-medium'
-                      : scrolled ? 'text-gray-600 hover:text-blue-500' : 'text-blue-100 hover:text-white'
+                      : scrolled ? 'text-gray-600 dark:text-blue-100 hover:text-blue-500' : 'text-blue-100 hover:text-white'
                   }`}
                 >
                   {item.label}
@@ -126,20 +129,46 @@ function Header() {
               </li>
             ))}
           </ul>
+          {/* Dark Mode Toggle Button */}
+          <button
+            onClick={toggleDarkMode}
+            className={`ml-6 w-10 h-10 flex items-center justify-center rounded-full ${
+              darkMode 
+                ? 'bg-blue-800 text-yellow-300 hover:bg-blue-700' 
+                : 'bg-blue-100 text-blue-800 hover:bg-blue-200'
+            } transition-colors`}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            <FontAwesomeIcon icon={darkMode ? faSun : faMoon} size="lg" />
+          </button>
         </nav>
         
         {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
-          onClick={toggleMobileMenu}
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {mobileMenuOpen ? (
-            <FontAwesomeIcon icon={faXmark} size="lg" className="h-6 w-6" />
-          ) : (
-            <FontAwesomeIcon icon={faBars} size="lg" className="h-6 w-6" />
-          )}
-        </button>
+        <div className="md:hidden flex items-center space-x-2">
+          {/* Dark Mode Toggle Button (Mobile) */}
+          <button
+            onClick={toggleDarkMode}
+            className={`w-10 h-10 flex items-center justify-center rounded-full ${
+              darkMode 
+                ? 'bg-blue-800 text-yellow-300' 
+                : scrolled ? 'bg-blue-100 text-blue-800' : 'bg-blue-700 text-white'
+            } transition-colors`}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+          </button>
+          <button 
+            className="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-blue-100"
+            onClick={toggleMobileMenu}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? (
+              <FontAwesomeIcon icon={faXmark} size="lg" className="h-6 w-6" />
+            ) : (
+              <FontAwesomeIcon icon={faBars} size="lg" className="h-6 w-6" />
+            )}
+          </button>
+        </div>
       </div>
       
       {/* Mobile Navigation Menu */}
@@ -158,11 +187,11 @@ function Header() {
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`block w-full text-left py-2.5 px-4 rounded-md ${
+              className={`block w-full text-left py-2.5 px-4 rounded-md transition-colors mb-1 duration-300 ${
                 activeSection === item.id
                   ? scrolled ? 'bg-blue-50 text-blue-600 font-medium' : 'bg-blue-800 text-white font-medium'
                   : scrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-blue-100 hover:bg-blue-800'
-              } transition-colors mb-1`}
+              }`}
             >
               {item.label}
             </button>

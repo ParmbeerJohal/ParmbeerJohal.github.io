@@ -42,7 +42,7 @@ function Footer() {
   return (
     <footer className="relative">      
       {/* Main Footer Content */}
-      <div className="bg-gradient-to-r from-blue-800 to-blue-900 text-white">
+      <div className="bg-gradient-to-r from-blue-800 dark:from-gray-800 to-blue-900 text-white">
         <div className="container mx-auto px-6 pt-6 pb-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-0 md:p-8">
             {/* Left Column - Social Links */}

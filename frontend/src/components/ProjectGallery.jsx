@@ -20,8 +20,8 @@ function ProjectGallery() {
     : projects;
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6">My Projects</h2>
+    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 transition-colors duration-300">
+      <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-6">My Projects</h2>
       
       <div className="mb-8">
         <div className="relative">
@@ -30,7 +30,7 @@ function ProjectGallery() {
             placeholder="Filter by technology..."
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:bg-gray-800 dark:border-gray-700 dark:text-white"
           />
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
             <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
@@ -67,10 +67,10 @@ function ProjectGallery() {
           >
             <div className="flex flex-col md:flex-row h-full">
               {/* Left side: Content */}
-              <div className="md:w-1/2 p-5 flex flex-col justify-between">
+              <div className="md:w-1/2 p-5 flex flex-col justify-between dark:bg-gray-800 transition-colors duration-300">
                 <div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-800">{project.title}</h3>
-                  <p className="text-gray-600 mb-3 line-clamp-6">{project.description}</p>
+                  <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200">{project.title}</h3>
+                  <p className="text-gray-600 dark:text-white mb-3 line-clamp-6">{project.description}</p>
                   
                   {/* Tech Stack Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -92,7 +92,7 @@ function ProjectGallery() {
                       href={project.liveUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex items-center text-gray-700 hover:text-blue-600 transition-colors"
+                      className="flex items-center text-gray-700 dark:text-white hover:text-blue-600 transition-colors"
                     >
                       <p className="pr-3">Live Demo (In Progress)</p> <FontAwesomeIcon icon={faExternalLinkAlt} size="xl" />
                     </a>
