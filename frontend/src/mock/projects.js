@@ -11,7 +11,7 @@ export const projects = [
     tech: ["React", "Node.js", "Azure", "Cosmos DB"],
     image: bookMeBuddy,
     github: "https://github.com/Booking-Management-System-App",
-    liveUrl: "https://icy-field-01073fe1e.5.azurestaticapps.net/"
+    //liveUrl: "https://icy-field-01073fe1e.5.azurestaticapps.net/"
   },
   {
     id: 2,
