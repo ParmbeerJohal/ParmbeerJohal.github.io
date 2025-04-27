@@ -38,20 +38,20 @@ function App() {
       </main>
       <Footer />
       
-      {/* Repositioned Chatbot - Bottom Right Corner */}
-      {/* <div className={`fixed bottom-20 right-4 z-20 transition-all duration-300 max-w-md
+      {/* Chatbot */}
+      <div className={`fixed bottom-20 right-4 z-20 transition-all duration-300 max-w-md
         ${showChatbot ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
         <Chatbot />
-      </div> */}
+      </div>
       
-      {/* Chat toggle button */}
-      {/* <button 
+      {/* Chatbot toggle button */}
+      <button 
         onClick={toggleChatbot}
-        className="fixed bottom-4 right-4 bg-blue-500 text-white rounded-full p-3 shadow-lg hover:bg-blue-600 transition-colors z-30"
+        className="fixed bottom-4 right-4 bg-blue-500 text-white rounded-full p-3 shadow-lg hover:bg-blue-600 transition-colors z-30 cursor-pointer"
         aria-label="Toggle chatbot"
       >
         <FontAwesomeIcon icon={faCommentDots} size="lg" />
-      </button> */}
+      </button>
     </div>
   );
 }
