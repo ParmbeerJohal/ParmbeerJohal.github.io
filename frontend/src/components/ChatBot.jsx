@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import bitmojiTalking from "../assets/bitmoji-talk.gif";
 
-function Chatbot() {
+function ChatBot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
@@ -13,23 +13,38 @@ function Chatbot() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
 
     // Add user message
     setMessages([...messages, { text: input, sender: "user" }]);
+    setInput("");
 
-    // TODO: Replace with actual bot response logic
-    // from backend or AI model
-    setTimeout(() => {
+    const response = await fetch("http://localhost:7071/api/QueryChatbot", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ "question": input })
+    });
+
+    const answers = await response.json();
+    const answerText = answers.answers[0].answer;
+
+    // Simulate a delay for the bot response
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    if (!answerText) {
       setMessages((prev) => [
         ...prev,
-        { text: `Thanks for your message: "${input}"`, sender: "bot" },
+        { text: "Sorry, I don't have an answer for that.", sender: "bot" },
       ]);
-    }, 1000);
+    }
 
-    setInput("");
+    // Add bot response
+    setMessages((prev) => [
+      ...prev,
+      { text: answerText, sender: "bot" },
+    ]);
   };
 
   return (
@@ -96,4 +111,4 @@ function Chatbot() {
   );
 }
 
-export default Chatbot;
+export default ChatBot;

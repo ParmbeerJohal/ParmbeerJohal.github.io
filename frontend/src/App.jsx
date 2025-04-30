@@ -4,7 +4,7 @@ import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
 import Header from "./components/Header";
 import AboutMe from "./components/AboutMe";
 import WorkExperience from "./components/WorkExperience";
-import Chatbot from "./components/Chatbot";
+import ChatBot from "./components/ChatBot";
 import ProjectGallery from "./components/ProjectGallery";
 import Footer from "./components/Footer";
 
@@ -41,7 +41,7 @@ function App() {
       {/* Chatbot */}
       <div className={`fixed bottom-20 right-4 z-20 transition-all duration-300 max-w-md
         ${showChatbot ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
-        <Chatbot />
+        <ChatBot />
       </div>
       
       {/* Chatbot toggle button */}
