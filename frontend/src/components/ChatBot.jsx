@@ -2,11 +2,13 @@ import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import bitmojiTalking from "../assets/bitmoji-talk.gif";
+import axios from "axios";
 
 function ChatBot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Scroll to bottom of messages when they update
   useEffect(() => {
@@ -20,31 +22,49 @@ function ChatBot() {
     // Add user message
     setMessages([...messages, { text: input, sender: "user" }]);
     setInput("");
+    setIsLoading(true);
 
-    const response = await fetch("http://localhost:7071/api/QueryChatbot", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ "question": input })
-    });
-
-    const answers = await response.json();
-    const answerText = answers.answers[0].answer;
-
-    // Simulate a delay for the bot response
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    if (!answerText) {
+    try {
+      // Azure Functions call with Axios
+      const response = await axios({
+        method: 'post',
+        url: import.meta.env.VITE_AZURE_QUERY_ENDPOINT,
+        headers: { 'Content-Type': 'application/json' },
+        data: { question: input },
+        timeout: 10000, // 10 second timeout
+      });
+      
+      const answers = response.data;
+      
+      // Simulate a delay for the bot response
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      
+      // Check if we have a valid answer
+      const answerText = answers?.answers?.[0]?.answer;
+      
+      if (!answerText) {
+        setMessages((prev) => [
+          ...prev,
+          { text: "Sorry, I don't have an answer for that.", sender: "bot" },
+        ]);
+      } else {
+        // Add bot response
+        setMessages((prev) => [
+          ...prev,
+          { text: answerText, sender: "bot" },
+        ]);
+      }
+    } catch (error) {
+      console.error("Error fetching from Azure Function:", error);
+      
+      // User-friendly error message
       setMessages((prev) => [
         ...prev,
-        { text: "Sorry, I don't have an answer for that.", sender: "bot" },
+        { text: "Sorry, I couldn't connect to my knowledge base. Please try again later.", sender: "bot" },
       ]);
+    } finally {
+      setIsLoading(false);
     }
-
-    // Add bot response
-    setMessages((prev) => [
-      ...prev,
-      { text: answerText, sender: "bot" },
-    ]);
   };
 
   return (
@@ -85,6 +105,13 @@ function ChatBot() {
                   </div>
                 </div>
               ))
+            )}
+            {isLoading && (
+              <div className="text-center py-2">
+                <div className="inline-block p-3 rounded-lg bg-gray-200 animate-pulse">
+                  Thinking...
+                </div>
+              </div>
             )}
             <div ref={messagesEndRef} />
           </div>
