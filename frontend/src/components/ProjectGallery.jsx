@@ -24,7 +24,7 @@ function ProjectGallery() {
       <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-6">My Projects</h2>
       
       <div className="mb-8">
-        <div className="relative">
+        <div className="relative w-75">
           <input
             type="text"
             placeholder="Filter by technology..."
@@ -102,7 +102,7 @@ function ProjectGallery() {
               
               {/* Right side: Image */}
               <div className="md:w-1/2 relative">
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 z-10 flex items-end ${hoveredId === project.id ? 'opacity-100' : ''}`}>
+                <div className={`absolute inset-0 bg-gradient-to-t from-black/60 to-transparent transition-opacity duration-300 z-10 flex items-end opacity-100 ${hoveredId === project.id ? 'xl:opacity-100' : 'xl:opacity-0'}`}>
                   <a 
                     href={project.github || project.liveUrl} 
                     target="_blank" 
