@@ -79,7 +79,7 @@ function WorkExperience() {
               {/* Timeline node */}
               <div 
                 className={`absolute left-1/8 md:left-1/2 transform -translate-x-4/9 md:-translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full cursor-pointer
-                  border-4 border-white shadow-lg transition-all duration-300 animate-bounce
+                  border-4 border-white shadow-lg transition-all duration-300 animate-bounce md:animate-none
                   ${getColorClasses(exp.color).bg} ${getColorClasses(exp.color).hoverBg} ${activeJob === exp.id ? 'scale-125' : ''}`}
                 onClick={() => handleJobClick(exp.id)}
               />
@@ -88,13 +88,13 @@ function WorkExperience() {
               <div 
                 className={`${
                   index % 2 === 0 
-                  ? "ml-0 pl-0 md:ml-12 md:pl-12 sm:pr-0 " 
-                  : "ml-0 pl-0 md:mr-12 md:pr-12 md:pl-0 md:text-right flex flex-col md:items-end"
+                  ? "ml-0 pl-0 lg:ml-12 lg:pl-12" 
+                  : "ml-0 pl-0 lg:mr-12 lg:pr-12 md:pl-0 md:text-right flex flex-col md:items-end"
                 }`}
               >
                 {/* Job Ball */}
                 <div className={`
-                  ${index % 2 === 0 ? "ml-auto mr-5 md:ml-0" : "ml-auto mr-5 md:mx-0"}
+                  ${index % 2 === 0 ? "ml-auto md:ml-8 mr-5" : "ml-auto mr-5"}
                   w-16 h-16 rounded-full shadow-lg mb-4 overflow-hidden
                   bg-white p-2 border-2 ${getColorClasses(exp.color).border}
                   ${activeJob === exp.id ? 'animate-pulse' : ''}
@@ -111,7 +111,7 @@ function WorkExperience() {
                 </div>
                 
                 {/* Job Title and Period */}
-                <div className={`mb-2 ml-auto pl-16 mr-5 ${index % 2 === 1 ? 'text-right' : 'text-right md:text-left'}`}>
+                <div className={`mb-2 ml-auto pl-16 mr-5 ${index % 2 === 0 ? 'md:pl-8 text-right md:text-left' : ' md:w-75 xl:w-100 text-right'}`}>
                   <h3 className={`text-xl font-bold ${getColorClasses(exp.color).text}`}>{exp.role}</h3>
                   <h4 className="text-lg font-semibold text-gray-700 dark:text-white">{exp.company}</h4>
                   <p className="text-sm text-gray-500">{exp.period}</p>
@@ -120,8 +120,8 @@ function WorkExperience() {
                 {/* Extended content that shows on click */}
                 <div 
                   className={`
-                    bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 text-left w-full
-                    ${index % 2 === 0 ? 'border-l-4' : 'border-r-4'} ${getColorClasses(exp.color).border}
+                    bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-left w-full
+                    ${index % 2 === 0 ? 'border-r-4 md:border-r-0 md:border-l-4' : 'border-r-4'} ${getColorClasses(exp.color).border}
                     transition-all duration-500 ease-in-out
                     ${activeJob === exp.id ? 'opacity-100 mt-4 mb-6' : 'opacity-0 h-0 py-0 overflow-hidden pointer-events-none'}
                   `}
@@ -154,7 +154,8 @@ function WorkExperience() {
                     onClick={() => handleJobClick(exp.id)}
                     className={`
                       hidden md:flex mt-2 text-sm dark:text-white ${getColorClasses(exp.color).hoverText} 
-                      dark:${getColorClasses(exp.color).hoverTextLight} font-medium items-center cursor-pointer
+                      dark:${getColorClasses(exp.color).hoverTextLight} font-medium items-center cursor-pointer 
+                      ${index % 2 === 0 ? 'ml-8' : 'mr-8'}
                     `}>
                     {index % 2 === 1 && (
                       <FontAwesomeIcon icon={faCaretDown} className="mr-1" />
