@@ -7,6 +7,9 @@ function Footer() {
   const currentYear = new Date().getFullYear();
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+
+  // Check if the device is touch-enabled
+  const isTouchDevice = navigator.maxTouchPoints > 0 || 'ontouchstart' in window || navigator.msMaxTouchPoints > 0;
   
   // Contact details
   const contactDetails = {
@@ -103,15 +106,22 @@ function Footer() {
                   <div className="flex-grow text-left">
                     <p className="text-sm text-blue-200 mb-1">Email</p>
                     <div className="flex items-center">
-                      <span className="text-white">{contactDetails.email}</span>
-                      <button 
+                      <a 
+                        href={`mailto:${contactDetails.email}`}
+                        className="text-white hover:text-blue-200 transition-colors"
+                        aria-label="Send email"
+                      >
+                        {contactDetails.email}
+                      </a>
+                      
+                      {!isTouchDevice && <button 
                         onClick={() => copyToClipboard(contactDetails.email, 'email')}
                         className={`ml-2 p-1 rounded-md ${copiedEmail ? 'bg-green-500' : 'bg-blue-700/50 hover:bg-blue-600/50 cursor-pointer'} transition-colors`}
                         title="Copy to clipboard"
                         aria-label="Copy email to clipboard"
                       >
                         <FontAwesomeIcon icon={copiedEmail ? faCheck : faCopy} size="md" className="text-white" />
-                      </button>
+                      </button>}
                     </div>
                   </div>
                 </div>
@@ -123,15 +133,21 @@ function Footer() {
                   <div className="flex-grow text-left">
                     <p className="text-sm text-blue-200 mb-1">Phone</p>
                     <div className="flex items-center">
-                      <span className="text-white">{contactDetails.phone}</span>
-                      <button 
+                      <a 
+                        href={`tel:${contactDetails.phone}`}
+                        className="text-white hover:text-blue-200 transition-colors"
+                        aria-label="Call phone number"
+                      >
+                        {contactDetails.phone}
+                      </a>
+                      {!isTouchDevice && <button 
                         onClick={() => copyToClipboard(contactDetails.phone, 'phone')}
                         className={`ml-2 p-1 rounded-md ${copiedPhone ? 'bg-green-500' : 'bg-blue-700/50 hover:bg-blue-600/50 cursor-pointer'} transition-colors`}
                         title="Copy to clipboard"
                         aria-label="Copy phone to clipboard"
                       >
                         <FontAwesomeIcon icon={copiedPhone ? faCheck : faCopy} size="md" className="text-white" />
-                      </button>
+                      </button>}
                     </div>
                   </div>
                 </div>
