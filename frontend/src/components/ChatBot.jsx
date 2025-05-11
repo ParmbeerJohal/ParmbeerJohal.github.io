@@ -7,13 +7,38 @@ import axios from "axios";
 function ChatBot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const messagesEndRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [typingText, setTypingText] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const [fullResponse, setFullResponse] = useState("");
+  const messagesEndRef = useRef(null);
 
   // Scroll to bottom of messages when they update
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // Typing animation effect
+  useEffect(() => {
+    if (!isTyping || !fullResponse) return;
+    
+    const typingSpeed = 30;
+    
+    if (typingText.length < fullResponse.length) {
+      // Continue typing
+      const timeout = setTimeout(() => {
+        setTypingText(fullResponse.slice(0, typingText.length + 1));
+      }, typingSpeed);
+      
+      return () => clearTimeout(timeout);
+    } else {
+      // Finished typing, add to messages
+      setMessages(prev => [...prev, { text: fullResponse, sender: "bot" }]);
+      setIsTyping(false);
+      setFullResponse("");
+      setTypingText("");
+    }
+  }, [isTyping, typingText, fullResponse]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,25 +59,25 @@ function ChatBot() {
         timeout: 10000, // 10 second timeout
       });
       
-      const answers = response.data;
+      const answers = response.data.answers;
       
       // Simulate a delay for the bot response
       await new Promise((resolve) => setTimeout(resolve, 1000));
       
       // Check if we have a valid answer
-      const answerText = answers?.answers?.[0]?.answer;
+      const answerText = answers?.[0]?.answer;
       
       if (!answerText) {
-        setMessages((prev) => [
-          ...prev,
-          { text: "Sorry, I don't have an answer for that.", sender: "bot" },
-        ]);
+        // Initiate typing animation for error message
+        const errorMessage = "Sorry, I don't have an answer for that.";
+        setFullResponse(errorMessage);
+        setTypingText("");
+        setIsTyping(true);
       } else {
-        // Add bot response
-        setMessages((prev) => [
-          ...prev,
-          { text: answerText, sender: "bot" },
-        ]);
+        // Initiate typing animation for response
+        setFullResponse(answerText);
+        setTypingText("");
+        setIsTyping(true);
       }
     } catch (error) {
       console.error("Error fetching from Azure Function:", error);
@@ -82,12 +107,13 @@ function ChatBot() {
         {/* Chat interface */}
         <div className="flex-grow w-full">
           <div className="bg-gray-100 rounded-lg p-4 mb-4 h-64 overflow-y-auto">
-            {messages.length === 0 ? (
-              <div className="text-gray-500 text-center py-10">
-                Hey there! Ask me anything about Parm's projects or skills!
-              </div>
-            ) : (
-              messages.map((msg, idx) => (
+          {messages.length === 0 && !isTyping ? (
+            <div className="text-gray-500 text-center py-10">
+              Hey there! Ask me anything about Parm's projects or skills!
+            </div>
+          ) : (
+            <>
+              {messages.map((msg, idx) => (
                 <div
                   key={idx}
                   className={`mb-3 ${
@@ -104,15 +130,27 @@ function ChatBot() {
                     {msg.text}
                   </div>
                 </div>
-              ))
-            )}
-            {isLoading && (
-              <div className="text-center py-2">
-                <div className="inline-block p-3 rounded-lg bg-gray-200 animate-pulse">
-                  Thinking...
+              ))}
+              
+              {/* Typing animation */}
+              {isTyping && (
+                <div className="mb-3 text-left">
+                  <div className="inline-block p-3 rounded-lg bg-gray-300 text-gray-800 rounded-bl-none">
+                    {typingText}
+                    <span className="ml-1 inline-block w-2 h-4 bg-gray-500 animate-pulse"></span>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+
+              {isLoading && !isTyping && (
+                <div className="text-center py-2">
+                  <div className="inline-block p-3 rounded-lg bg-gray-200 animate-pulse">
+                    Thinking...
+                  </div>
+                </div>
+              )}
+            </>
+          )}
             <div ref={messagesEndRef} />
           </div>
 
