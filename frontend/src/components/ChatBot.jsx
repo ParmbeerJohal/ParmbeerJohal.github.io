@@ -50,8 +50,6 @@ function ChatBot() {
       const idleTimeout = setTimeout(() => {
         setAvatarState("idle");
       }, 2000); // 2 seconds delay
-      
-      //return () => clearTimeout(idleTimeout);
     }
   }, [isTyping, typingText, fullResponse]);
 
