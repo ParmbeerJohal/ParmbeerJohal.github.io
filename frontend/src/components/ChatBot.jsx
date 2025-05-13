@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import bitmojiTalking from "../assets/bitmoji-talk.gif";
+import avatarTalking from "../assets/avatar-talk.png";
+import avatarIdle from "../assets/avatar-idle.png";
+import avatarThink from "../assets/avatar-think.png";
 import axios from "axios";
 
 function ChatBot() {
@@ -13,6 +15,9 @@ function ChatBot() {
   const [fullResponse, setFullResponse] = useState("");
   const messagesEndRef = useRef(null);
 
+  // Avatar image states
+  const [avatarState, setAvatarState] = useState("talk");
+
   // Scroll to bottom of messages when they update
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -21,6 +26,9 @@ function ChatBot() {
   // Typing animation effect
   useEffect(() => {
     if (!isTyping || !fullResponse) return;
+
+    // Start talking when typing begins
+    setAvatarState("talk");
     
     const typingSpeed = 30;
     
@@ -37,6 +45,13 @@ function ChatBot() {
       setIsTyping(false);
       setFullResponse("");
       setTypingText("");
+
+      // Switch to idle avatar after typing finishes (with delay)
+      const idleTimeout = setTimeout(() => {
+        setAvatarState("idle");
+      }, 2000); // 2 seconds delay
+      
+      //return () => clearTimeout(idleTimeout);
     }
   }, [isTyping, typingText, fullResponse]);
 
@@ -48,6 +63,7 @@ function ChatBot() {
     setMessages([...messages, { text: input, sender: "user" }]);
     setInput("");
     setIsLoading(true);
+    setAvatarState("think");
 
     try {
       // Azure Functions call with Axios
@@ -89,19 +105,42 @@ function ChatBot() {
       ]);
     } finally {
       setIsLoading(false);
+      setAvatarState("talk");
     }
   };
 
   return (
     <div className="max-w-3xl mx-auto">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-        {/* Bitmoji character */}
-        <div className="w-40 h-40 relative flex-shrink-0 rounded-full overflow-hidden bg-gray-100 border-2 border-blue-500 shadow-lg">
-          <img
-            src={bitmojiTalking}
-            alt="Chatbot Bitmoji"
-            className="w-full h-full object-cover"
-          />
+        {/* Avatar character */}
+        <div className="w-32 md:w-40 h-32 md:h-40 relative flex-shrink-0 rounded-full overflow-hidden bg-black border-2 border-blue-500 shadow-lg">
+          <div className="relative w-full h-full">
+            {/* Talking avatar */}
+            <img
+              src={avatarTalking}
+              alt="Chatbot Avatar Talking"
+              className={`absolute top-2 w-full h-full object-cover transition-opacity duration-500 ${
+                avatarState === "talk" ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+            
+            {/* Idle avatar */}
+            <img
+              src={avatarIdle}
+              alt="Chatbot Avatar Idle"
+              className={`absolute top-2 w-full h-full object-cover transition-opacity duration-500 ${
+                avatarState === "idle" ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+            {/* Thinking avatar */}
+            <img
+              src={avatarThink}
+              alt="Chatbot Avatar Thinking"
+              className={`absolute top-2 w-full h-full object-cover transition-opacity duration-500 ${
+                avatarState === "think" ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          </div>
         </div>
 
         {/* Chat interface */}
@@ -109,7 +148,7 @@ function ChatBot() {
           <div className="bg-gray-100 rounded-lg p-4 mb-4 h-64 overflow-y-auto">
           {messages.length === 0 && !isTyping ? (
             <div className="text-gray-500 text-center py-10">
-              Hey there! Ask me anything about Parm's projects or skills!
+              Hey there! Ask me anything about my projects, skills, and more!
             </div>
           ) : (
             <>
