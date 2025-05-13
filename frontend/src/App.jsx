@@ -4,15 +4,17 @@ import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
 import Header from "./components/Header";
 import AboutMe from "./components/AboutMe";
 import WorkExperience from "./components/WorkExperience";
-import Chatbot from "./components/Chatbot";
+import ChatBot from "./components/ChatBot";
 import ProjectGallery from "./components/ProjectGallery";
 import Footer from "./components/Footer";
 
 function App() {
-  const [showChatbot, setShowChatbot] = useState(true);
+  const [showChatbot, setShowChatbot] = useState(false);
+  const [isChatOpenedFirstTime, setIsChatOpenedFirstTime] = useState(false);
   
   const toggleChatbot = () => {
     setShowChatbot(!showChatbot);
+    setIsChatOpenedFirstTime(true);
   };
   
   return (
@@ -38,20 +40,20 @@ function App() {
       </main>
       <Footer />
       
-      {/* Repositioned Chatbot - Bottom Right Corner */}
-      {/* <div className={`fixed bottom-20 right-4 z-20 transition-all duration-300 max-w-md
+      {/* Chatbot */}
+      <div className={`fixed bottom-26 right-10 z-20 transition-all duration-300 max-w-md
         ${showChatbot ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
-        <Chatbot />
-      </div> */}
+        <ChatBot />
+      </div>
       
-      {/* Chat toggle button */}
-      {/* <button 
+      {/* Chatbot toggle button */}
+      <button 
         onClick={toggleChatbot}
-        className="fixed bottom-4 right-4 bg-blue-500 text-white rounded-full p-3 shadow-lg hover:bg-blue-600 transition-colors z-30"
+        className={`fixed bottom-10 right-10 bg-blue-500 text-white rounded-full p-3 shadow-lg hover:bg-blue-600 transition-colors z-30 cursor-pointer ${!isChatOpenedFirstTime && 'animate-bounce'}`}
         aria-label="Toggle chatbot"
       >
         <FontAwesomeIcon icon={faCommentDots} size="lg" />
-      </button> */}
+      </button>
     </div>
   );
 }
