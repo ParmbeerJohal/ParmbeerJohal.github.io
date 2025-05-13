@@ -82,10 +82,11 @@ function ChatBot() {
       
       // Check if we have a valid answer
       const answerText = answers?.[0]?.answer;
+      const answerId = answers?.[0]?.id;
       
-      if (!answerText) {
+      if (!answerText || answerId === -1) {
         // Initiate typing animation for error message
-        const errorMessage = "Sorry, I don't have an answer for that.";
+        const errorMessage = "I don't have an answer for that at this moment, but you're welcome to ask some more questions!";
         setFullResponse(errorMessage);
         setTypingText("");
         setIsTyping(true);
